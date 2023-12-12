@@ -106,18 +106,34 @@ class WeatherWidget extends HTMLElement {
             const current_weather = data.properties.periods[0];
             const temp = current_weather.temperature;
             const unit = current_weather.temperatureUnit;
-            const curTemp = `${temp} \u00B0${unit}`;
+            const humid = current_weather.relativeHumidity.value;
+            const time = (current_weather.isDaytime == true)? "Day Time":"Night Time";
+            const dew_temp = current_weather.dewpoint.value;
 
             const forcast = document.createElement("p");
             forcast.innerHTML = current_weather.detailedForecast;
+
+            const humidity = document.createElement("p");
+            humidity.innerHTML = `Humidity: ${humid}%`
+
+            const timeOfDay = document.createElement("p");
+            timeOfDay.innerHTML = `Period: ${time}` 
+
+            const dewPoint = document.createElement("p");
+            dewPoint.innerHTML = `Dew Point: ${dew_temp} ${current_weather.dewpoint.unitCode.slice(8)}`
 
             const weather_icon = document.createElement('img');
             weather_icon.src = current_weather.icon;
             
             this.appendChild(weather_icon);
+            this.appendChild(timeOfDay);
+            this.appendChild(humidity);
+            this.appendChild(dewPoint);
             this.appendChild(forcast);
+
         });
     }
 }
 
 customElements.define("weather-widget", WeatherWidget);
+
