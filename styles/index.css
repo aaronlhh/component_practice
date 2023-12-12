@@ -1,0 +1,39 @@
+* {
+    text-align: center;
+}
+
+#rating-title {
+    margin-top: 20px;
+}
+
+rating-widget form{
+    margin: 10px 0px 20px 0px;
+}
+
+.stars {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+}
+
+.star {
+    font-size: 3em;
+    cursor: pointer;
+    color: #d3d3d3;
+}
+  
+.star:hover,
+.star:hover ~ .star,
+.star.active {
+    color: #ffc107;
+}
+
+
+
+
+
+
+/* weather */
+#error-message {
+    font-size: 1.45em;
+}
